@@ -7,5 +7,5 @@ RUN ls /data
 RUN apt-get update -y && apt-get install python-dev python3-dev libsasl2-dev python-dev libldap2-dev libssl-dev -y
 #Installe flask
 RUN pip install flask flask_httpauth flask_simpleldap python-dotenv
-EXPOSE 80:80
+EXPOSE 5000:5000
 CMD [ "python", "/data/student_age.py" ]
