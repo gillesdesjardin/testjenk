@@ -29,7 +29,7 @@ try:
     student_age_file_path
     student_age_file_path  = os.environ['student_age_file_path'] 
 except NameError:
-    student_age_file_path  = '/home/desjardin/student_age.json'
+    student_age_file_path  = '/data/student_age.json'
 
 student_age_file = open(student_age_file_path, "r")
 student_age = json.load(student_age_file)
@@ -68,7 +68,7 @@ def article(year, month, title):
 @app.route('/get_student_age/<student_name>', methods=['GET'])
 def get_student_age(student_name):
     print(student_name)
-    student_age_file_path  = '/home/desjardin/student_age.json'
+    student_age_file_path  = '/data/student_age.json'
     student_age_file = open(student_age_file_path, "r")
     student_age = json.load(student_age_file)
     print(student_age)
