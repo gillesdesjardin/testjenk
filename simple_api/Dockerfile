@@ -4,7 +4,7 @@ COPY student_age.py /data/.
 COPY student_age.json /data/.
 RUN ls /data
 #Check & installe python
-RUN apt-get update -y && apt-get install python-dev python3-dev libsasl2-dev python-dev libldap2-dev libssl-dev -y
+RUN apt-get update -y && apt-get install python-dev python3-dev libsasl2-dev python-dev libldap2-dev libssl-dev curl python3-venv python3-pip -y
 #Installe flask
 RUN pip install flask flask_httpauth flask_simpleldap python-dotenv
 EXPOSE 5000:5000
