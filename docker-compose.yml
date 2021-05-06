@@ -13,7 +13,7 @@ services:
   myapi:
     image: python:2.7-stretch
     ports:
-      - 5000:80
+      - 5000:5000
     volumes:
       - ./website/simple_api/student_age.json:/data/student_age.json
     restart: always
