@@ -65,7 +65,7 @@ def article(year, month, title):
     print(title)
     return title
             
-@app.route('/get_student_ages/<student_name>', methods=['GET'])
+@app.route('/get_student_age/<student_name>', methods=['GET'])
 def get_student_age(student_name):
     print(student_name)
     student_age_file_path  = '/home/desjardin/student_age.json'
