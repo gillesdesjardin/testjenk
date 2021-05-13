@@ -2,7 +2,6 @@ version: '3'
 services:
   website:
     image: php:7.2-apache
-    container_name: "pozos-website"
     ports:
       - "8002:80"
     networks:
@@ -21,7 +20,6 @@ services:
     build:
       context: .
       dockerfile: simple_api/Dockerfile
-    container_name: "pozos-myapi"
     ports:
       - "5000:5000"
     networks:
