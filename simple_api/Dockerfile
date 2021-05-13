@@ -1,10 +1,10 @@
 FROM python:2.7-stretch
 RUN mkdir /data
-COPY student_age.py /data/.
-COPY student_age.json /data/.
-RUN ls /data
+COPY simple_api/student_age.py /data/.
+COPY simple_api/student_age.json /data/.
+#RUN ls /data
 #Check & installe python
-RUN apt-get update -y && apt-get install python-dev python3-dev libsasl2-dev python-dev libldap2-dev libssl-dev curl python3-venv python3-pip -y
+RUN apt-get update -y && apt-get install python-dev python3-dev libsasl2-dev python-dev libldap2-dev libssl-dev -y
 #Installe flask
 RUN pip install flask flask_httpauth flask_simpleldap python-dotenv
 EXPOSE 5000:5000

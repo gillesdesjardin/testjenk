@@ -36,52 +36,22 @@ student_age = json.load(student_age_file)
 print(student_age)
 student_age_file.close()
 
-@app.route('/get_student_ages', methods=['GET'])
+@app.route('/pozos/api/v1.0/get_student_ages', methods=['GET'])
+#@app.route('/get_student_ages', methods=['GET'])
 @auth.login_required
 def get_student_ages():
     print("get_student_ages")
     return jsonify({'student_ages': student_age })
 
-#student_name =request.args.get('student_name', default = '*', type = str)
+@app.route('/pozos/api/v1.0/get_student_ages/<student_name>', methods=['GET'])
 #@app.route('/get_student_ages/<student_name>', methods=['GET'])
-
-@app.route('/user/<string:name>/', methods=['GET', 'POST'])
-def user_view(name):
-    print(name)
-    return(name)
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    username = request.args.get('username')
-    print(username)
-    password = request.args.get('password')
-    print(password)
-    return(username)
-
-@app.route('/<int:year>/<int:month>/<title>')
-def article(year, month, title):
-    print(year)
-    print(month)
-    print(title)
-    return title
-            
-@app.route('/get_student_age/<student_name>', methods=['GET'])
+@auth.login_required
 def get_student_age(student_name):
     print(student_name)
-    student_age_file_path  = '/data/student_age.json'
-    student_age_file = open(student_age_file_path, "r")
-    student_age = json.load(student_age_file)
-    print(student_age)
-    student_age_file.close()
-    print("get_student_age:")
-    print(student_age)
     if student_name not in student_age :
-        print("error not found in")
-        print(student_age)
         abort(404)
     if student_name in student_age :
       age = student_age[student_name]
-      print(age)
       del student_age[student_name]
       with open(student_age_file_path, 'w') as student_age_file:
         json.dump(student_age, student_age_file, indent=4, ensure_ascii=False)

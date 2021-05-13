@@ -2,18 +2,40 @@ version: '3'
 services:
   website:
     image: php:7.2-apache
+    container_name: "pozos-website"
+    ports:
+      - "8002:80"
+    networks:
+      - dir1_some-net
     volumes:
       - ./website:/var/www/html
-    links:
+    depends_on:
       - myapi
     environment:
-      USERNAME: toto
-      PASSWORD: python
-    restart: always
+      USERNAME: "toto"
+      PASSWORD: "python"
+    #restart: always
   myapi:
-    image: python:2.7-stretch
+    #image: python:2.7-stretch
+    image: image2
+    build:
+      context: .
+      dockerfile: simple_api/Dockerfile
+    container_name: "pozos-myapi"
     ports:
-      - 5000:5000
+      - "5000:5000"
+    networks:
+      - dir1_some-net
     volumes:
-      - ./website/simple_api/student_age.json:/data/student_age.json
-    restart: always
+      - ./simple_api/student_age.json:/data/student_age.json
+    #restart: always
+networks:
+  dir1_some-net:
+    driver: bridge
+
+    website:
+        build: ./website/.
+        depends_on:
+            - myserver
+        links:
+            - myserver
