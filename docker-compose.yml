@@ -6,7 +6,7 @@ services:
     ports:
       - "8002:80"
     networks:
-      - dir1_some-net
+      - inter_net
     volumes:
       - ./website:/var/www/html
     depends_on:
@@ -25,17 +25,11 @@ services:
     ports:
       - "5000:5000"
     networks:
-      - dir1_some-net
+      - inter_net
     volumes:
       - ./simple_api/student_age.json:/data/student_age.json
     #restart: always
 networks:
-  dir1_some-net:
+  inter_net:
     driver: bridge
 
-    website:
-        build: ./website/.
-        depends_on:
-            - myserver
-        links:
-            - myserver
