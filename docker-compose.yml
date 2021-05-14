@@ -19,13 +19,13 @@ services:
     image: image2
     build:
       context: .
-      dockerfile: simple_api/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     networks:
       - inter_net
     volumes:
-      - ./simple_api/student_age.json:/data/student_age.json
+      - ./student_age.json:/data/student_age.json
     #restart: always
 networks:
   inter_net:
