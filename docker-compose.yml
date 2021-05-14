@@ -28,6 +28,5 @@ services:
       - ./simple_api/student_age.json:/data/student_age.json
     #restart: always
 networks:
-  inter_net:i
+  inter_net:
     driver: bridge
-
