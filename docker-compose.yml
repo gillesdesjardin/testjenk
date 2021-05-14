@@ -17,7 +17,6 @@ services:
   myapi:
     #image: python:2.7-stretch
     image: image2
-    container_name: myapi_pozos
     build:
       context: .
       dockerfile: simple_api/DockerfileComp
