@@ -19,7 +19,7 @@ services:
     image: image2
     build:
       context: .
-      dockerfile: DockerfileComp
+      dockerfile: simple_api/DockerfileComp
     ports:
       - "5000:5000"
     networks:
